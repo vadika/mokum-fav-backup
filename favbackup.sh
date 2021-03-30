@@ -21,8 +21,7 @@ fi
 
 
 for ((i=1; ; i+=1)); do
-    contents=$(curl -H "Content-Type: application/json" -H "X-API-Token: $API_TOKEN" "https://mokum.plac
-e/filter/favs.json?page=$i")
+    contents=$(curl -H "Content-Type: application/json" -H "X-API-Token: $API_TOKEN" "https://mokum.place/filter/favs.json?page=$i")
     echo "$contents" > $i.json
     if jq -e '.older_entries_url | length == 0' >/dev/null; then 
        break
