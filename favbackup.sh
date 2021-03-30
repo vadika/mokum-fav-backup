@@ -4,6 +4,7 @@ if [ $# -eq 0 ]
   then
     echo "run it with Mokum api key, like favbackup.sh xxxxx-xxxxx-xxxx-xxxx"
     echo "you may retreive your key at https://mokum.place/customize/apitokens"
+    exit 1
 fi
 
 API_TOKEN=$1
