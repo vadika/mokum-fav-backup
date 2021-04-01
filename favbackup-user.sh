@@ -30,6 +30,7 @@ if [ "$auth" != '<html><body>You are being <a href="https://mokum.place/">redire
 fi
 
 page="/filter/favs.json"
+count=0
 
 while :;
 do
@@ -40,7 +41,8 @@ do
 
     contents=$(curl -b cookie -c cookie   -H "Content-Type: application/json" $URL )
 
-    echo "$contents" > `basename $page`
+    echo "$contents" > "favs-$count.json"
+    (( count ++ ))
 
     page=$(jq -e '.precise_older_entries_url' <<<"$contents")
     if jq -e '.older_entries_url | length == 0 ' >/dev/null; then 
